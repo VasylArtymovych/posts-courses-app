@@ -2,22 +2,46 @@
   <form class="form">
     <div class="controls-container">
       <label for="" class="form__label"></label>
-      <input type="email" class="form__input" />
+      <custom-input
+        v-focus
+        type="email"
+        class="form__input"
+        v-model="form.email.value"
+        @blur="form.email.blur"
+      ></custom-input>
     </div>
+
     <div class="controls-container">
       <label for="" class="form__label"></label>
-      <input type="password" class="form__input" />
+      <custom-input
+        type="email"
+        class="form__input"
+        v-model="form.password.value"
+        @blur="form.password.blur"
+      ></custom-input>
     </div>
     <button class="submit-btn">SUBMIT</button>
+    <pre>{{ form }}</pre>
   </form>
 </template>
 
-<script>
-export default {
-  setup() {
-    return {};
+<script lang="ts">
+export default {};
+</script>
+<script setup lang="ts">
+import { required, minLength } from "@/utils/validators";
+import { useForm } from "@/hooks/form";
+
+const form = useForm({
+  email: {
+    value: "",
+    validators: { required },
   },
-};
+  password: {
+    value: "",
+    validators: { required, minLength: minLength(7) },
+  },
+});
 </script>
 
 <style lang="css">
@@ -46,3 +70,54 @@ export default {
   border-radius: 0.5rem;
 }
 </style>
+
+/**CompositionApi without setup */
+<!-- 
+<template>
+  <form class="form">
+    <div class="controls-container">
+      <label for="" class="form__label"></label>
+      <custom-input
+        v-focus
+        type="email"
+        class="form__input"
+        v-model="form.email.value"
+        @blur="form.email.blur"
+      ></custom-input>
+    </div>
+
+    <div class="controls-container">
+      <label for="" class="form__label"></label>
+      <custom-input
+        type="email"
+        class="form__input"
+        v-model="form.password.value"
+        @blur="form.password.blur"
+      ></custom-input>
+    </div>
+    <button class="submit-btn">SUBMIT</button>
+    <pre>{{ form }}</pre>
+  </form>
+</template>
+
+<script>
+import { required, minLength } from "@/utils/validators";
+import { useForm } from "@/hooks/form";
+
+export default {
+  setup() {
+    const form = useForm({
+      email: {
+        value: "",
+        validators: { required },
+      },
+      password: {
+        value: "",
+        validators: { required, minLength: minLength(7) },
+      },
+    });
+
+    return { form };
+  },
+};
+</script> -->

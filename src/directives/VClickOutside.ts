@@ -1,7 +1,9 @@
 import { DirectiveBinding, ObjectDirective } from "vue";
+
+type ClickOutsideDirective = ObjectDirective & { name: string };
 //directive is active when click event fires outside the el:
-export default <ObjectDirective>{
-  // name: "click-outside",
+export default <ClickOutsideDirective>{
+  name: "click-outside",
 
   mounted(el, binding: DirectiveBinding) {
     el.clickOutside = function (event: Event) {
@@ -13,7 +15,7 @@ export default <ObjectDirective>{
     document.body.addEventListener("click", el.clickOutside);
   },
 
-  unmounted(el, binding) {
+  unmounted(el) {
     document.body.removeEventListener("click", el.clickOutside);
   },
 };

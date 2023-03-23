@@ -1,39 +1,54 @@
 <template>
-  <button class="btn" @click="isPopupVisible = true">show Popup</button>
+  <MainHeader />
   <div class="home">
     <AuthForm />
-    <VPopaup v-if="isPopupVisible" />
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from "vue";
+<script setup lang="ts">
 import AuthForm from "@/components/AuthForm.vue";
-import VPopaup from "@/components/VPopup.vue";
-
-export default defineComponent({
-  name: "HomeView",
-  components: {
-    AuthForm,
-    VPopaup,
-  },
-
-  setup() {
-    const isPopupVisible = ref(false);
-
-    return { isPopupVisible };
-  },
-});
+import MainHeader from "@/components/Header/MainHeader.vue";
 </script>
+
+<!-- <script lang="ts">
+export default {
+  name: "HomeView",
+};
+</script> -->
 
 <style scoped>
 .home {
   display: flex;
   justify-content: center;
 }
+nav {
+  padding: 30px;
+}
 
-.btn {
-  width: 150px;
-  height: 35px;
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>
+
+<!-- <script lang="ts">
+import { defineComponent } from "vue";
+import AuthForm from "@/components/AuthForm.vue";
+import MainHeader from "@/components/Header/MainHeader.vue";
+
+export default defineComponent({
+  name: "HomeView",
+  components: {
+    MainHeader,
+    AuthForm,
+  },
+
+  setup() {
+    return {};
+  },
+});
+</script> -->
