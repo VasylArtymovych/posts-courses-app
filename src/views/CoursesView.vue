@@ -1,11 +1,8 @@
 <template lang="">
-  <MainHeader />
   <div>Courses</div>
 </template>
 
-<script setup lang="ts">
-import MainHeader from "@/components/Header/MainHeader.vue";
-</script>
+<script setup lang="ts"></script>
 
 <!-- <script lang="ts">
 export default {

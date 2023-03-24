@@ -1,9 +1,8 @@
 <template>
   <div class="header">
     <div class="container">
-      <span class="logo"><i class="material-icons">face</i> App</span>
+      <HeaderLogo>StudyApp</HeaderLogo>
       <HeaderNav />
-      <!-- <slot></slot> -->
     </div>
   </div>
 </template>
@@ -12,21 +11,23 @@
 export default {};
 </script>
 <script setup lang="ts">
+import HeaderLogo from "@/components/Header/HeaderLogo.vue";
 import HeaderNav from "@/components/Header/HeaderNav.vue";
 </script>
 
 <style lang="css">
 .header {
   width: 100%;
-  height: 40px;
+  height: 50px;
 
   background: linear-gradient(
     to bottom,
     rgb(79, 79, 188) 20%,
     rgb(17, 17, 50) 100%
   );
-  /* box-shadow: 0 2px 4px 2px rgb(79, 79, 188); */
-  /* border-bottom: 1px solid rgb(6, 218, 229); */
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .container {
@@ -40,7 +41,7 @@ import HeaderNav from "@/components/Header/HeaderNav.vue";
 
 @media screen and (min-width: 768px) {
   .header {
-    height: 50px;
+    height: 60px;
   }
 }
 </style>

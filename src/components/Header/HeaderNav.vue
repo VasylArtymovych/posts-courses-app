@@ -1,6 +1,6 @@
 <template>
   <nav class="nav">
-    <custom-button
+    <styled-link-button
       v-if="route.path !== '/'"
       type="button"
       @click="
@@ -8,9 +8,11 @@
           navigateTo('/');
         }
       "
-      >Home</custom-button
+      firstColor="#ff1f71"
+      secondColor="#ff1f71"
+      >Home</styled-link-button
     >
-    <custom-button
+    <styled-link-button
       v-if="route.path !== '/posts'"
       type="button"
       @click="
@@ -18,9 +20,9 @@
           navigateTo('/posts');
         }
       "
-      >Posts</custom-button
+      >Posts</styled-link-button
     >
-    <custom-button
+    <styled-link-button
       v-if="route.path !== '/courses'"
       type="button"
       @click="
@@ -28,7 +30,7 @@
           navigateTo('/courses');
         }
       "
-      >Courses</custom-button
+      >Courses</styled-link-button
     >
   </nav>
 </template>
@@ -52,6 +54,9 @@ const navigateTo = (path: string) => {
 <style lang="css">
 .nav {
   height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 7px;
 }
 
 .nav__link {

@@ -1,13 +1,11 @@
 <template>
-  <MainHeader />
   <div class="home">
-    <AuthForm />
+    <!-- <AuthForm /> -->
   </div>
 </template>
 
 <script setup lang="ts">
 import AuthForm from "@/components/AuthForm.vue";
-import MainHeader from "@/components/Header/MainHeader.vue";
 </script>
 
 <!-- <script lang="ts">
@@ -20,6 +18,13 @@ export default {
 .home {
   display: flex;
   justify-content: center;
+  padding: 0, 20px;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(41, 41, 91),
+    rgb(140, 124, 51),
+    rgb(51, 51, 192)
+  );
 }
 nav {
   padding: 30px;

@@ -20,7 +20,7 @@
         @blur="form.password.blur"
       ></custom-input>
     </div>
-    <button class="submit-btn">SUBMIT</button>
+    <styled-link-button>SUBMIT</styled-link-button>
     <pre>{{ form }}</pre>
   </form>
 </template>
@@ -31,6 +31,7 @@ export default {};
 <script setup lang="ts">
 import { required, minLength } from "@/utils/validators";
 import { useForm } from "@/hooks/form";
+import StyledLinkButton from "./UI/StyledLinkButton.vue";
 
 const form = useForm({
   email: {
@@ -46,6 +47,7 @@ const form = useForm({
 
 <style lang="css">
 .form {
+  position: relative;
   display: flex;
   flex-direction: column;
   row-gap: 1.25rem;
@@ -53,6 +55,25 @@ const form = useForm({
   padding: 1.25rem;
   background-color: rgb(38, 115, 115);
   border-radius: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+.form::before {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  z-index: -1;
+  transform: translate(7px, 5px);
+  background: linear-gradient(
+    45deg,
+    rgb(79, 79, 188),
+    #b39b19,
+    rgb(79, 79, 188),
+    rgb(17, 17, 50),
+    #706420,
+    rgb(79, 79, 188)
+  );
+  filter: blur(5px);
 }
 .controls-container {
 }
@@ -62,12 +83,6 @@ const form = useForm({
   width: 100%;
   height: 2.5rem;
   font-size: 18px;
-}
-.submit-btn {
-  width: 30%;
-  height: 2.5rem;
-  align-self: flex-end;
-  border-radius: 0.5rem;
 }
 </style>
 
