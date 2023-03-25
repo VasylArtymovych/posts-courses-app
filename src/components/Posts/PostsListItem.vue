@@ -19,7 +19,7 @@ export default {};
 </script>
 <script setup lang="ts">
 import { IPost } from "@/types/postTypes";
-import CustomButton from "./UI/CustomButton.vue";
+import CustomButton from "@/components/UI/CustomButton.vue";
 
 interface IProps {
   post: IPost;

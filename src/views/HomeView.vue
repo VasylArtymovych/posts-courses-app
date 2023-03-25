@@ -1,12 +1,8 @@
 <template>
-  <div class="home">
-    <!-- <AuthForm /> -->
-  </div>
+  <div class="home">Home</div>
 </template>
 
-<script setup lang="ts">
-import AuthForm from "@/components/AuthForm.vue";
-</script>
+<script setup lang="ts"></script>
 
 <!-- <script lang="ts">
 export default {
@@ -16,15 +12,10 @@ export default {
 
 <style scoped>
 .home {
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   padding: 0, 20px;
-  background-image: linear-gradient(
-    to bottom,
-    rgb(41, 41, 91),
-    rgb(140, 124, 51),
-    rgb(51, 51, 192)
-  );
 }
 nav {
   padding: 30px;

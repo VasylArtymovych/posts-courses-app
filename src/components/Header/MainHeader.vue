@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div class="container">
+    <div class="header__container">
       <HeaderLogo>StudyApp</HeaderLogo>
       <HeaderNav />
     </div>
@@ -15,7 +15,7 @@ import HeaderLogo from "@/components/Header/HeaderLogo.vue";
 import HeaderNav from "@/components/Header/HeaderNav.vue";
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 .header {
   width: 100%;
   height: 50px;
@@ -30,7 +30,7 @@ import HeaderNav from "@/components/Header/HeaderNav.vue";
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.container {
+.header__container {
   width: 100%;
   height: 100%;
   display: flex;

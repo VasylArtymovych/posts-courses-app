@@ -14,7 +14,7 @@ export default {
 
 <script setup lang="ts">
 interface IProps {
-  type: string;
+  type?: string;
   modelValue: string | number;
 }
 const emit = defineEmits<{

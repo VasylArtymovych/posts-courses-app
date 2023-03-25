@@ -1,6 +1,6 @@
 import { ref, watchEffect } from "vue";
 import type { Ref } from "vue";
-import axios, { isAxiosError } from "axios";
+import axios from "axios";
 import { postsUrl } from "@/utils/requsetUrls";
 import { IPost } from "@/types/postTypes";
 
@@ -19,14 +19,11 @@ export const usePosts = (limit = 10, page = 1) => {
           _page: currPage.value,
         },
       });
+
       posts.value = response.data;
       totalPages.value = Math.ceil(response.headers["x-total-count"] / limit);
     } catch (err: any) {
-      if (err.isAxiosError()) {
-        error.value = err.message;
-      } else {
-        error.value = "An unexpected error occured";
-      }
+      error.value = err.message;
     }
   };
 

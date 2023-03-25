@@ -14,7 +14,7 @@ export default {};
 </script>
 <script setup lang="ts">
 import { IPost } from "@/types/postTypes";
-import PostsListItem from "@/components/PostsListItem.vue";
+import PostsListItem from "@/components/Posts/PostsListItem.vue";
 
 interface IProps {
   posts: IPost[];
@@ -27,6 +27,6 @@ defineProps<IProps>();
 .list {
   list-style: none;
   width: 100%;
-  padding: 0.625rem;
+  /* padding: 0.625rem; */
 }
 </style>

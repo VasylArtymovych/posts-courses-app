@@ -46,9 +46,9 @@ const props = withDefaults(defineProps<IProps>(), {
   background: linear-gradient(180deg, rgb(184, 122, 16), rgb(185, 178, 145));
 }
 .btn:active {
-  -webkit-box-shadow: inset 0 0px 4px 2px teal;
-  -moz-box-shadow: inset 0 0px 4px 2px teal;
-  box-shadow: inset 0 0px 4px 2px teal;
+  -webkit-box-shadow: inset 0 0px 4px 2px var(--dark-purpule-color);
+  -moz-box-shadow: inset 0 0px 4px 2px var(--dark-purpule-color);
+  box-shadow: inset 0 0px 4px 2px var(--dark-purpule-color);
 }
 .btn-layout {
   display: flex;
@@ -65,8 +65,6 @@ const props = withDefaults(defineProps<IProps>(), {
     width: 4rem;
     height: 2rem;
     font-size: 0.8rem;
-    font-weight: 700;
-    background: linear-gradient(90deg, rgb(185, 178, 145), rgb(184, 122, 16));
   }
 }
 </style>

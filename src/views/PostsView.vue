@@ -1,18 +1,36 @@
 <template>
-  <div class="posts-view">
-    <PostsList :posts="posts" @delete-post="deletePost" />
+  <div class="container">
+    <div class="top-wrapper">
+      <custom-select v-model="selectedSortOpt" :options="postSortOptions" />
+      <custom-input class="top-input" v-model="searchQuery" />
+      <custom-button class="top-btn">ADD POST</custom-button>
+    </div>
+    <h2 v-if="error" class="error">Oops! Error encountered: {{ error }}</h2>
+    <PostsList
+      v-else-if="posts.length > 0"
+      :posts="searchedSortedPosts"
+      @delete-post="deletePost"
+    />
+    <h2 v-else class="loader">Loading...{{ error }}</h2>
   </div>
 </template>
 
 <script setup lang="ts">
 import { usePosts } from "@/hooks/posts";
-import PostsList from "@/components/PostsList.vue";
+import { useSortedPosts } from "@/hooks/sortedPosts";
+import { useSearchedSortedPosts } from "@/hooks/searchedSortedPosts";
+import PostsList from "@/components/Posts/PostsList.vue";
+import { postSortOptions } from "@/utils/slectOtions";
 
 const { posts, currPage, totalPages, error, deletePost } = usePosts();
+const { selectedSortOpt, sortedPosts } = useSortedPosts(posts);
+const { searchQuery, searchedSortedPosts } =
+  useSearchedSortedPosts(sortedPosts);
+console.log("ddddd", error);
 </script>
 
 <style scoped>
-.posts-view {
+.container {
   min-height: 100vh;
   padding: 0 1.25rem;
   background-image: linear-gradient(
@@ -21,5 +39,78 @@ const { posts, currPage, totalPages, error, deletePost } = usePosts();
     rgb(154, 148, 124),
     rgb(84, 84, 119)
   );
+}
+
+.top-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0.7rem 0;
+}
+.top-input {
+  order: 1;
+  flex: 1 1 300px;
+  height: 1.5rem;
+  margin-top: 10px;
+
+  border: 1px solid var(--dark-purpule-color);
+  border-radius: 5px;
+  outline: none;
+  background: linear-gradient(
+    360deg,
+    var(--pink-color),
+    whitesmoke,
+    whitesmoke,
+    var(--pink-color)
+  );
+}
+.top-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  height: 1.5rem;
+  font-size: 0.5rem;
+  font-weight: 700;
+  background: var(--btn-bgr);
+}
+
+@media screen and (min-width: 480px) {
+  .top-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+  .top-input {
+    order: 0;
+    flex: 1 1 0;
+    height: 1.7rem;
+    margin-top: 0;
+  }
+  .top-btn {
+    width: 4rem;
+    height: 1.7rem;
+    font-size: 0.5rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .top-wrapper {
+    padding: 1.2rem 0;
+  }
+
+  .top-input {
+    order: 0;
+    flex: 1 1 0;
+    height: 2rem;
+    margin-top: 0;
+  }
+  .top-btn {
+    width: 6rem;
+    height: 2rem;
+    font-size: 0.75rem;
+  }
 }
 </style>
