@@ -1,8 +1,13 @@
 <template>
-  <div class="home">Home</div>
+  <div class="home">
+    Home
+    <PostForm />
+  </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import PostForm from "@/components/Posts/PostForm.vue";
+</script>
 
 <!-- <script lang="ts">
 export default {
@@ -12,10 +17,11 @@ export default {
 
 <style scoped>
 .home {
-  min-height: 100vh;
-  display: flex;
+  min-height: 100%;
+  /* display: flex;
   justify-content: center;
-  padding: 0, 20px;
+  align-items: center; */
+  padding: 60px 20px 0;
 }
 nav {
   padding: 30px;

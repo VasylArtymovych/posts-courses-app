@@ -4,24 +4,46 @@
       <label for="" class="form__label"></label>
       <custom-input
         v-focus
-        type="email"
+        v-model="form.title.value"
+        type="text"
+        placeholder="POST TITLE"
+        @blur="form.title.blur"
         class="form__input"
-        v-model="form.email.value"
-        @blur="form.email.blur"
+        :class="{ invalid: !form.title.valid && form.title.touched }"
       ></custom-input>
+      <p v-if="form.title.errors.required && form.title.touched" class="error">
+        Field is required
+      </p>
+      <p
+        v-else-if="form.title.errors.minLength && form.title.touched"
+        class="error"
+      >
+        Title length can't be less then 7.
+      </p>
     </div>
 
     <div class="controls-container">
       <label for="" class="form__label"></label>
-      <custom-input
-        type="email"
-        class="form__input"
-        v-model="form.password.value"
-        @blur="form.password.blur"
-      ></custom-input>
+      <custom-textarea
+        v-model="form.text.value"
+        placeholder="POST TEXT"
+        @blur="form.text.blur"
+        class="form__textarea"
+        :class="{ invalid: !form.text.valid && form.text.touched }"
+      ></custom-textarea>
+      <p v-if="form.text.errors.required && form.text.touched" class="error">
+        Field is required
+      </p>
+      <p
+        v-else-if="form.text.errors.minLength && form.text.touched"
+        class="error"
+      >
+        Title length can't be less then 18.
+      </p>
     </div>
-    <styled-link-button>SUBMIT</styled-link-button>
-    <pre>{{ form }}</pre>
+    <styled-link-button :class="{ disable: !form.valid }"
+      >SUBMIT</styled-link-button
+    >
   </form>
 </template>
 
@@ -31,58 +53,74 @@ export default {};
 <script setup lang="ts">
 import { required, minLength } from "@/utils/validators";
 import { useForm } from "@/hooks/form";
-import StyledLinkButton from "./UI/StyledLinkButton.vue";
 
 const form = useForm({
-  email: {
-    value: "",
-    validators: { required },
-  },
-  password: {
+  title: {
     value: "",
     validators: { required, minLength: minLength(7) },
+  },
+  text: {
+    value: "",
+    validators: { required, minLength: minLength(18) },
   },
 });
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 .form {
-  position: relative;
+  /* position: relative; */
   display: flex;
   flex-direction: column;
   row-gap: 1.25rem;
-  width: 35rem;
-  padding: 1.25rem;
-  background-color: rgb(38, 115, 115);
-  border-radius: 0.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-}
-.form::before {
-  content: "";
-  position: absolute;
-  inset: -5px;
-  z-index: -1;
-  transform: translate(7px, 5px);
+  width: 17.7rem;
+  padding: 1rem;
   background: linear-gradient(
-    45deg,
-    rgb(79, 79, 188),
-    #b39b19,
-    rgb(79, 79, 188),
-    rgb(17, 17, 50),
-    #706420,
-    rgb(79, 79, 188)
+    90deg,
+    var(--light-blue-color),
+    var(--whitesmoke-color),
+    var(--light-blue-color)
   );
-  filter: blur(5px);
+  border-radius: var(--sm-radius);
 }
+
 .controls-container {
-}
-.form__label {
-}
-.form__input {
   width: 100%;
-  height: 2.5rem;
-  font-size: 18px;
+}
+
+.form__input,
+.form__textarea {
+  width: 100%;
+  height: 2rem;
+  font-size: 12px;
+  padding: 0 5px;
+  outline: none;
+  border: 1px solid var(--dark-purpule-color);
+}
+
+.form__textarea {
+  resize: none;
+}
+
+.error {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 10px;
+  color: red;
+}
+
+.disable:hover {
+  transform: translateX(30px);
+}
+
+@media screen and (min-width: 768px) {
+  .form {
+    width: 25rem;
+  }
+
+  .form__input,
+  .form__textarea {
+    font-size: 18px;
+    height: 2.5rem;
+  }
 }
 </style>
 

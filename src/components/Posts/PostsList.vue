@@ -27,6 +27,6 @@ defineProps<IProps>();
 .list {
   list-style: none;
   width: 100%;
-  /* padding: 0.625rem; */
+  padding: 0.625rem 0;
 }
 </style>

@@ -1,10 +1,10 @@
-import { ref, watch } from "vue";
-import { IFormFieldValue, IErrors } from "@/types/formTypes";
+import { reactive, ref, watch } from "vue";
+import { IFormFieldValue, Errors } from "@/types/formTypes";
 
 export const useField = (field: IFormFieldValue) => {
   const value = ref(field.value);
   const valid = ref(true);
-  const errors = ref<IErrors>({});
+  const errors = reactive<Errors>({});
   const touched = ref(false);
 
   const not = (val: boolean): boolean => !val;
@@ -19,7 +19,7 @@ export const useField = (field: IFormFieldValue) => {
       if (not(isValid)) {
         valid.value = false;
       }
-      errors.value[validator] = not(isValid);
+      errors[validator] = not(isValid);
     });
   };
 

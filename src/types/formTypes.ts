@@ -14,6 +14,10 @@ export interface IInitFormParam {
   [key: string]: IFormFieldValue;
 }
 
+export type Errors = {
+  [key in keyof IValidators]: boolean;
+};
+
 export interface IErrors {
   [key: string]: boolean;
 }

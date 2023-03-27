@@ -1,10 +1,13 @@
 <template>
+  <input :type="props.type" v-model="value" />
+</template>
+<!-- <template>
   <input
     :type="props.type"
     :value="props.modelValue"
     @input="updateInputValue"
   />
-</template>
+</template> -->
 
 <script lang="ts">
 export default {
@@ -13,6 +16,8 @@ export default {
 </script>
 
 <script setup lang="ts">
+import { computed } from "vue";
+
 interface IProps {
   type?: string;
   modelValue: string | number;
@@ -25,12 +30,26 @@ const props = withDefaults(defineProps<IProps>(), {
   type: "text",
 });
 
-const updateInputValue = (event: Event) => {
-  emit("update:modelValue", (event.target as HTMLInputElement).value);
-};
+// const updateInputValue = (event: Event) => {
+//   emit("update:modelValue", (event.target as HTMLInputElement).value);
+// };
+
+//another option to implement v-model:
+const value = computed({
+  get() {
+    return props.modelValue;
+  },
+  set(newVal: string | number) {
+    emit("update:modelValue", newVal);
+  },
+});
 </script>
 
-<style lang=""></style>
+<style lang="css" scoped>
+.invalid {
+  border: 1px solid red;
+}
+</style>
 
 /**compositionApi without setup */
 <!-- <template>

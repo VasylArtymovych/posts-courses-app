@@ -51,7 +51,8 @@ const navigateTo = (path: string) => {
   router.push(path);
 };
 </script>
-<style lang="css">
+
+<style lang="css" scoped>
 .nav {
   height: 100%;
   display: flex;

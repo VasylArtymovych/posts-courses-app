@@ -1,0 +1,59 @@
+:root {
+  --main-bgr: linear-gradient(
+    to bottom,
+    var(--light-purpule-color),
+    var(--ligth-orange-color),
+    var(--light-purpule-color)
+  );
+  --dark-bgr: linear-gradient(
+    to bottom,
+    rgb(79, 79, 188) 20%,
+    rgb(17, 17, 50) 100%
+  );
+  --btn-bgr: linear-gradient(
+    90deg,
+    var(--ligth-orange-color),
+    var(--dark-orange-color)
+  );
+  --white-color: #fff;
+  --whitesmoke-color: whitesmoke;
+  --pink-color: #ff1f71;
+  --yelow-color: #ff0;
+  --blue-btn-color: #0906c7;
+  --light-blue-color: rgb(39, 158, 190);
+  --ligth-orange-color: rgb(185, 178, 145);
+  --orange-color: rgb(255, 136, 0);
+  --dark-orange-color: rgb(184, 122, 16);
+  --dark-purpule-color: rgb(45, 11, 96);
+  --light-purpule-color: rgb(98, 98, 160);
+
+  --sm-radius: 0.5rem;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  height: 100%;
+
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(98, 98, 160),
+    rgb(154, 148, 124),
+    rgb(84, 84, 119)
+  );
+}

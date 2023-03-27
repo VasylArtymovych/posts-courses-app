@@ -9,10 +9,12 @@ export const usePosts = (limit = 10, page = 1) => {
   const postsLimit = ref(limit);
   const currPage = ref(page);
   const totalPages = ref(1);
+  const loading = ref(false);
   const error = ref("");
 
   const fetchPosts = async () => {
     try {
+      loading.value = true;
       const response = await axios.get<IPost[]>(postsUrl, {
         params: {
           _limit: postsLimit.value,
@@ -24,6 +26,8 @@ export const usePosts = (limit = 10, page = 1) => {
       totalPages.value = Math.ceil(response.headers["x-total-count"] / limit);
     } catch (err: any) {
       error.value = err.message;
+    } finally {
+      loading.value = false;
     }
   };
 
@@ -33,5 +37,13 @@ export const usePosts = (limit = 10, page = 1) => {
 
   watchEffect(fetchPosts);
 
-  return { posts, postsLimit, currPage, totalPages, error, deletePost };
+  return {
+    posts,
+    postsLimit,
+    currPage,
+    totalPages,
+    loading,
+    error,
+    deletePost,
+  };
 };

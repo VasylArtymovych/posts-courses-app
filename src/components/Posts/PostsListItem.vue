@@ -26,7 +26,7 @@ interface IProps {
 }
 
 const emit = defineEmits<{ (e: "deletePost"): void }>();
-const props = defineProps<IProps>();
+defineProps<IProps>();
 
 const onDeleteBtn = () => {
   emit("deletePost");
@@ -45,6 +45,8 @@ const onDeleteBtn = () => {
   border: 2px solid rgb(45, 11, 96);
   border-radius: 10px;
   box-shadow: 0 4px 0 rgb(84, 75, 124);
+  background: transparent;
+  backdrop-filter: hue-rotate(100deg);
 }
 .item:not(:last-child) {
   margin-bottom: 0.625rem;
