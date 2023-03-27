@@ -38,7 +38,7 @@
         v-else-if="form.text.errors.minLength && form.text.touched"
         class="error"
       >
-        Title length can't be less then 18.
+        Text length can't be less then 18.
       </p>
     </div>
     <styled-link-button :class="{ disable: !form.valid }"
@@ -120,6 +120,12 @@ const form = useForm({
   .form__textarea {
     font-size: 18px;
     height: 2.5rem;
+  }
+
+  .error {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 14px;
+    color: red;
   }
 }
 </style>
