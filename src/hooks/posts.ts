@@ -32,7 +32,7 @@ export const usePosts = (limit = 10, page = 1) => {
   };
 
   const addPost = (post: IPost) => {
-    posts.value.push(post);
+    posts.value.unshift(post);
   };
 
   const deletePost = (id: number) => {

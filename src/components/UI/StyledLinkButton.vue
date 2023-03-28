@@ -1,6 +1,6 @@
 <template>
   <div class="btn-wrraper">
-    <button class="btn" v-bind="$attrs" :disabled="disabled">
+    <button class="btn" v-bind="$attrs" :v-bind="$attrs">
       <slot></slot>
     </button>
   </div>
@@ -17,7 +17,6 @@ export default {
 interface IProps {
   firstColor?: string;
   secondColor?: string;
-  disabled?: boolean;
 }
 withDefaults(defineProps<IProps>(), {
   firstColor: "#0906c7",

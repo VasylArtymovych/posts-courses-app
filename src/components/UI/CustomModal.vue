@@ -1,15 +1,17 @@
 <template>
-  <div v-if="isShown" class="modal__backdrop" @click.self.stop="closeModal">
-    <div class="modal__container">
-      <h3 class="modal__header">
-        <slot name="header">Default header</slot>
-      </h3>
+  <Transition name="modal">
+    <div v-if="isShown" class="modal__backdrop" @click.self.stop="closeModal">
+      <div class="modal__container">
+        <h3 class="modal__header">
+          <slot name="header">Default header</slot>
+        </h3>
 
-      <div class="modal__body">
-        <slot>Default body</slot>
+        <div class="modal__body">
+          <slot>Default body</slot>
+        </div>
       </div>
     </div>
-  </div>
+  </Transition>
 </template>
 
 <script lang="ts">
@@ -60,6 +62,7 @@ withDefaults(defineProps<IProps>(), {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: 1rem;
   margin-bottom: 1rem;
+  text-align: center;
   color: var(--dark-purpule-color);
   text-shadow: -1px 0 var(--whitesmoke-color), 0 1px var(--whitesmoke-color),
     1px 0 var(--whitesmoke-color), 0 -1px var(--whitesmoke-color);
@@ -72,9 +75,28 @@ withDefaults(defineProps<IProps>(), {
     0 0 0 2px var(--dark-purpule-color);
 }
 
+.modal-enter-active {
+  animation: bounce-in 0.5s;
+}
+.modal-leave-active {
+  animation: bounce-in 0.5s reverse;
+}
+
 @media screen and (min-width: 768px) {
   .modal__header {
     font-size: 1.5rem;
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 </style>

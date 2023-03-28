@@ -10,6 +10,12 @@
       <custom-button @click="toggleModal" class="top-btn"
         >ADD POST</custom-button
       >
+      <Teleport to="#modal">
+        <custom-modal :isShown="isShown" :closeModal="toggleModal">
+          <template #header> Create post </template>
+          <PostForm @add-post="addPostHandler" />
+        </custom-modal>
+      </Teleport>
     </div>
     <h2 v-if="error" class="error">Oops! Error encountered: {{ error }}</h2>
     <PostsList
@@ -19,11 +25,15 @@
     />
     <h2 v-if="loading" class="loader">Loading...{{ error }}</h2>
   </div>
-
-  <custom-modal :isShown="isShown" :closeModal="toggleModal">
-    <template #header> Create post </template>
-    <PostForm @add-post="addPostHandler" />
-  </custom-modal>
+  <VPagination
+    :curr-page="currPage"
+    :total-pages="totalPages"
+    @update:curr-page="
+      (page) => {
+        currPage = page;
+      }
+    "
+  />
 </template>
 
 <script setup lang="ts">
@@ -32,9 +42,10 @@ import { useSortedPosts } from "@/hooks/sortedPosts";
 import { useSearchedSortedPosts } from "@/hooks/searchedSortedPosts";
 import { useModal } from "@/hooks/modal";
 import { postSortOptions } from "@/utils/slectOtions";
+import { IPost } from "@/types/postTypes";
 import PostsList from "@/components/Posts/PostsList.vue";
 import PostForm from "@/components/Posts/PostForm.vue";
-import { IPost } from "@/types/postTypes";
+import VPagination from "@/components/VPagination.vue";
 
 const { posts, currPage, totalPages, loading, error, addPost, deletePost } =
   usePosts();
@@ -51,7 +62,7 @@ const addPostHandler = (post: IPost) => {
 
 <style scoped>
 .container {
-  min-height: 100%;
+  min-height: 100vh;
   padding: 3.75rem 1.25rem 0;
   background-image: linear-gradient(
     to bottom,

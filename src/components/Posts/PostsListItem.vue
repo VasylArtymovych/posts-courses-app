@@ -49,7 +49,7 @@ const onDeleteBtn = () => {
   backdrop-filter: hue-rotate(100deg);
 }
 .item:not(:last-child) {
-  margin-bottom: 0.625rem;
+  margin-bottom: 0.7rem;
 }
 .item__id {
   display: flex;
