@@ -6,7 +6,7 @@ export interface IValidators {
 }
 
 export interface IFormFieldValue {
-  value: string | number;
+  value: string;
   validators: IValidators;
 }
 

@@ -57,10 +57,10 @@ const onDeleteBtn = () => {
   justify-content: center;
   position: absolute;
   z-index: 1;
-  left: -5px;
+  left: -7px;
   top: -5px;
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1.6rem;
+  height: 1.6rem;
   font-family: fantasy;
   font-size: 0.8rem;
   font-weight: bold;
@@ -89,8 +89,9 @@ const onDeleteBtn = () => {
 
 @media screen and (min-width: 768px) {
   .item__id {
-    width: 1.7rem;
-    height: 1.7rem;
+    left: -10px;
+    width: 2rem;
+    height: 2rem;
     font-size: 1rem;
   }
   .item__title {

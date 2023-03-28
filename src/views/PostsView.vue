@@ -22,7 +22,7 @@
 
   <custom-modal :isShown="isShown" :closeModal="toggleModal">
     <template #header> Create post </template>
-    <PostForm />
+    <PostForm @add-post="addPostHandler" />
   </custom-modal>
 </template>
 
@@ -34,12 +34,19 @@ import { useModal } from "@/hooks/modal";
 import { postSortOptions } from "@/utils/slectOtions";
 import PostsList from "@/components/Posts/PostsList.vue";
 import PostForm from "@/components/Posts/PostForm.vue";
+import { IPost } from "@/types/postTypes";
 
-const { posts, currPage, totalPages, loading, error, deletePost } = usePosts();
+const { posts, currPage, totalPages, loading, error, addPost, deletePost } =
+  usePosts();
 const { selectedSortOpt, sortedPosts } = useSortedPosts(posts);
 const { searchQuery, searchedSortedPosts } =
   useSearchedSortedPosts(sortedPosts);
 const { isShown, toggleModal } = useModal();
+
+const addPostHandler = (post: IPost) => {
+  addPost(post);
+  toggleModal();
+};
 </script>
 
 <style scoped>

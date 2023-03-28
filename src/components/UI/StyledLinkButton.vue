@@ -1,30 +1,32 @@
 <template>
-  <div class="btn">
-    <a href="#" class="btn__link">
+  <div class="btn-wrraper">
+    <button class="btn" v-bind="$attrs" :disabled="disabled">
       <slot></slot>
-    </a>
+    </button>
   </div>
 </template>
 
 <script lang="ts">
 export default {
   name: "styled-link-button",
+  inheritAttrs: false,
 };
 </script>
 
 <script setup lang="ts">
-interface IColor {
+interface IProps {
   firstColor?: string;
   secondColor?: string;
+  disabled?: boolean;
 }
-withDefaults(defineProps<IColor>(), {
+withDefaults(defineProps<IProps>(), {
   firstColor: "#0906c7",
   secondColor: "#ff0",
 });
 </script>
 
 <style lang="css" scoped>
-.btn {
+.btn-wrraper {
   position: relative;
   top: 0;
   left: 0;
@@ -37,7 +39,7 @@ withDefaults(defineProps<IColor>(), {
   font-size: 0.7rem;
 }
 
-.btn__link {
+.btn {
   position: absolute;
   top: 0;
   left: 0;
@@ -53,9 +55,12 @@ withDefaults(defineProps<IColor>(), {
   overflow: hidden;
   background: rgba(255, 255, 255, 0.05);
   box-shadow: 0 15px 10px rgba(0, 0, 0, 0.3);
+  border-left: none;
+  border-right: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 30px;
+  /* outline: none; */
   color: #fff;
   z-index: 1;
   transition: 0.5s;
@@ -63,12 +68,12 @@ withDefaults(defineProps<IColor>(), {
   backdrop-filter: blur(15px);
 }
 
-.btn:hover .btn__link {
+.btn-wrraper:hover .btn {
   letter-spacing: 3px;
   /* color: #fff; */
 }
 
-.btn__link::before {
+.btn::before {
   content: "";
   position: absolute;
   top: 0;
@@ -81,11 +86,11 @@ withDefaults(defineProps<IColor>(), {
   filter: blur(0px);
 }
 
-.btn:hover .btn__link::before {
+.btn-wrraper:hover .btn::before {
   transform: skewX(45deg) translate(200px);
 }
 
-.btn::before {
+.btn-wrraper::before {
   content: "";
   position: absolute;
   left: 50%;
@@ -101,14 +106,14 @@ withDefaults(defineProps<IColor>(), {
   transition-delay: 0.5;
 }
 
-.btn:hover::before /*lightup button*/ {
+.btn-wrraper:hover::before /*lightup button*/ {
   bottom: 0;
   height: 50%;
   width: 80%;
   border-radius: 30px;
 }
 
-.btn::after {
+.btn-wrraper::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -124,7 +129,7 @@ withDefaults(defineProps<IColor>(), {
   transition-delay: 0.5;
 }
 
-.btn:hover::after /*lightup button*/ {
+.btn-wrraper:hover::after /*lightup button*/ {
   top: 0;
   height: 50%;
   width: 80%;
@@ -132,7 +137,7 @@ withDefaults(defineProps<IColor>(), {
 }
 
 @media screen and (min-width: 768px) {
-  .btn {
+  .btn-wrraper {
     width: 6rem;
     height: 35px;
     font-size: 1rem;

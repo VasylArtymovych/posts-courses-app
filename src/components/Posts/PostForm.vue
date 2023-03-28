@@ -41,8 +41,8 @@
         Text length can't be less then 18.
       </p>
     </div>
-    <styled-link-button :class="{ disable: !form.valid }"
-      >SUBMIT</styled-link-button
+    <styled-link-button :disabled="!form.valid" @click.prevent.="onSubmit"
+      >CREATE</styled-link-button
     >
   </form>
 </template>
@@ -51,8 +51,15 @@
 export default {};
 </script>
 <script setup lang="ts">
+import { unref } from "vue";
 import { required, minLength } from "@/utils/validators";
 import { useForm } from "@/hooks/form";
+import { IPost } from "@/types/postTypes";
+import { postId } from "@/store/postId";
+
+const emit = defineEmits<{
+  (e: "addPost", value: IPost): void;
+}>();
 
 const form = useForm({
   title: {
@@ -64,6 +71,17 @@ const form = useForm({
     validators: { required, minLength: minLength(18) },
   },
 });
+
+const onSubmit = () => {
+  const id = postId.value;
+  const post = {
+    id,
+    title: unref(form.title.value),
+    body: unref(form.text.value),
+  };
+  emit("addPost", post);
+  postId.value++;
+};
 </script>
 
 <style lang="css" scoped>
@@ -107,9 +125,9 @@ const form = useForm({
   color: red;
 }
 
-.disable:hover {
+/* .disable:hover {
   transform: translateX(30px);
-}
+} */
 
 @media screen and (min-width: 768px) {
   .form {

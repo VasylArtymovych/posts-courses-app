@@ -31,6 +31,10 @@ export const usePosts = (limit = 10, page = 1) => {
     }
   };
 
+  const addPost = (post: IPost) => {
+    posts.value.push(post);
+  };
+
   const deletePost = (id: number) => {
     posts.value = posts.value.filter((post) => post.id !== id);
   };
@@ -44,6 +48,7 @@ export const usePosts = (limit = 10, page = 1) => {
     totalPages,
     loading,
     error,
+    addPost,
     deletePost,
   };
 };
