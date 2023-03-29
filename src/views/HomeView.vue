@@ -1,13 +1,8 @@
 <template>
-  <div class="home">
-    Home
-    <PostForm />
-  </div>
+  <div class="home">Home</div>
 </template>
 
-<script setup lang="ts">
-import PostForm from "@/components/Posts/PostForm.vue";
-</script>
+<script setup lang="ts"></script>
 
 <!-- <script lang="ts">
 export default {

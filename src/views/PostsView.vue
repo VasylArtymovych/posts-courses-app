@@ -24,16 +24,16 @@
       @delete-post="deletePost"
     />
     <h2 v-if="loading" class="loader">Loading...{{ error }}</h2>
+    <VPagination
+      :curr-page="currPage"
+      :total-pages="totalPages"
+      @update:curr-page="
+        (page) => {
+          currPage = page;
+        }
+      "
+    />
   </div>
-  <VPagination
-    :curr-page="currPage"
-    :total-pages="totalPages"
-    @update:curr-page="
-      (page) => {
-        currPage = page;
-      }
-    "
-  />
 </template>
 
 <script setup lang="ts">
@@ -62,14 +62,9 @@ const addPostHandler = (post: IPost) => {
 
 <style scoped>
 .container {
-  min-height: 100vh;
-  padding: 3.75rem 1.25rem 0;
-  background-image: linear-gradient(
-    to bottom,
-    rgb(98, 98, 160),
-    rgb(154, 148, 124),
-    rgb(84, 84, 119)
-  );
+  min-height: calc(100vh);
+  padding: 0 1.25rem;
+  background-image: var(--main-bgr);
 }
 
 .top-wrapper {
@@ -77,7 +72,7 @@ const addPostHandler = (post: IPost) => {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  padding: 0.7rem 0;
+  padding: 4rem 0 1rem;
 }
 .top-input {
   order: 1;
@@ -108,17 +103,14 @@ const addPostHandler = (post: IPost) => {
 
 @media screen and (min-width: 480px) {
   .top-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
   }
   .top-input {
     order: 0;
     flex: 1 1 0;
     height: 1.7rem;
     margin-top: 0;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
   }
   .top-btn {
     width: 4rem;
@@ -129,7 +121,7 @@ const addPostHandler = (post: IPost) => {
 
 @media screen and (min-width: 768px) {
   .top-wrapper {
-    padding: 1.2rem 0;
+    padding: 4.7rem 0 1rem;
   }
 
   .top-input {

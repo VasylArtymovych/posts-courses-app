@@ -50,10 +50,5 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  background-image: linear-gradient(
-    to bottom,
-    rgb(98, 98, 160),
-    rgb(154, 148, 124),
-    rgb(84, 84, 119)
-  );
+  background-image: var(--main-bgr);
 }

@@ -27,8 +27,10 @@ defineProps<IProps>();
 
 <style lang="css" scoped>
 .list {
+  position: relative;
   list-style: none;
   width: 100%;
+  min-height: calc(100vh - 146px - 32px);
   padding: 0.625rem 0;
 }
 
@@ -40,9 +42,21 @@ defineProps<IProps>();
 .item-enter-from,
 .item-leave-to {
   opacity: 0;
-  transform: translateX(55px);
 }
 .item-leave-active {
   position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@media (min-width: 480px) {
+  .list {
+    min-height: calc(100vh - 112px - 32px);
+  }
+}
+@media (min-width: 768px) {
+  .list {
+    min-height: calc(100vh - 124px - 40px);
+  }
 }
 </style>
