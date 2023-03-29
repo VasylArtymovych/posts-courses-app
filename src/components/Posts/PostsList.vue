@@ -42,11 +42,10 @@ defineProps<IProps>();
 .item-enter-from,
 .item-leave-to {
   opacity: 0;
+  transform: scale(0.5);
 }
 .item-leave-active {
   position: absolute;
-  top: 0;
-  left: 0;
 }
 
 @media (min-width: 480px) {
