@@ -2,12 +2,13 @@
   <ul class="list">
     <TransitionGroup name="item" tag="ul">
       <PostsListItem
-        v-for="post in posts"
+        v-for="(post, index) in posts"
         :key="post.id"
         :post="post"
-        @delete-post="$emit('deletePost', post.id)"
+        @delete-post="$emit('deletePost', post.id, index)"
       />
     </TransitionGroup>
+    <p v-if="posts.length <= 0" class="empty-list-text">List is empty</p>
   </ul>
 </template>
 
@@ -48,14 +49,36 @@ defineProps<IProps>();
   position: absolute;
 }
 
+.empty-list-text {
+  font-family: fantasy;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--light-purpule-color);
+  text-shadow: -1px 0 var(--dark-purpule-color), 1px 0 var(--dark-purpule-color),
+    0 -1px var(--dark-purpule-color), 0 1px var(--dark-purpule-color);
+}
+
 @media (min-width: 480px) {
   .list {
-    min-height: calc(100vh - 112px - 32px);
+    min-height: calc(100vh - 112px - 40px);
   }
 }
 @media (min-width: 768px) {
   .list {
     min-height: calc(100vh - 124px - 40px);
+  }
+
+  .empty-list-text {
+    font-size: 1.7rem;
+  }
+}
+@media (min-width: 1024px) {
+  .list {
+    min-height: calc(100vh - 124px - 48px);
+  }
+
+  .empty-list-text {
+    font-size: 2rem;
   }
 }
 </style>

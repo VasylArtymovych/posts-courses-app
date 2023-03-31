@@ -1,8 +1,21 @@
 <template>
-  <div class="home">Home</div>
+  <div class="home">
+    Home
+    <h2>{{ test.count }}</h2>
+    <button @click="test.count++">+</button>
+    <button @click="replace">replace</button>
+  </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { reactive } from "vue";
+
+let test = reactive({ count: 0 });
+
+const replace = () => {
+  test = reactive({ count: 7 });
+};
+</script>
 
 <!-- <script lang="ts">
 export default {

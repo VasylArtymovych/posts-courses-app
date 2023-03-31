@@ -35,8 +35,9 @@ export const usePosts = (limit = 10, page = 1) => {
     posts.value.unshift(post);
   };
 
-  const deletePost = (id: number) => {
-    posts.value = posts.value.filter((post) => post.id !== id);
+  const deletePost = (id: number, index: number) => {
+    // posts.value = posts.value.filter((post) => post.id !== id);
+    posts.value.splice(index, 1);
   };
 
   watchEffect(fetchPosts);

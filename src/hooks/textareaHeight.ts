@@ -1,8 +1,9 @@
-import { ref, onMounted } from "vue";
+// import { onMounted } from "vue";
+import { ref } from "vue";
 
 export const useSetTextareaHeight = () => {
   const textAreaRef = ref<HTMLTextAreaElement | null>(null);
-  let height: number;
+  const height = 42;
 
   const changeTextareaHeight = (): void => {
     if (textAreaRef.value) {
@@ -20,11 +21,11 @@ export const useSetTextareaHeight = () => {
     }
   };
 
-  onMounted(() => {
-    if (textAreaRef.value) {
-      height = textAreaRef.value.offsetHeight;
-    }
-  });
+  // onMounted(() => {
+  //   if (textAreaRef.value) {
+  //     height = textAreaRef.value.offsetHeight;
+  //   }
+  // });
 
   return { textAreaRef, changeTextareaHeight };
 };

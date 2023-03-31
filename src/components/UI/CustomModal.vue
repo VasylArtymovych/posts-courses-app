@@ -1,6 +1,6 @@
 <template>
   <Transition name="modal">
-    <div v-if="isShown" class="modal__backdrop" @click.self.stop="closeModal">
+    <div v-show="isShown" class="modal__backdrop" @click.self.stop="closeModal">
       <div class="modal__container">
         <h3 class="modal__header">
           <slot name="header">Default header</slot>

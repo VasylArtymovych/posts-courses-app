@@ -1,9 +1,9 @@
 import { computed, reactive } from "vue";
-import { IFormFieldValue, IFormWithValidKey } from "@/types/formTypes";
+import { IFormFieldValue } from "@/types/formTypes";
 import { useField } from "@/hooks/field";
 
 export const useForm = <T extends object>(init: T) => {
-  const form: IFormWithValidKey = reactive({});
+  const form = reactive<{ [key: string]: any }>({});
   const formValidKey = "valid";
 
   Object.entries(init).forEach(([key, value]: [string, IFormFieldValue]) => {

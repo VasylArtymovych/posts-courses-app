@@ -1,5 +1,5 @@
-import type { ComputedRef } from "vue";
-import { useField } from "@/hooks/field";
+// import type { ComputedRef } from "vue";
+// import { useField } from "@/hooks/field";
 
 export interface IValidators {
   [ket: string]: (val: string | number) => boolean;
@@ -30,8 +30,8 @@ export interface IErrors {
 //   blur: () => void;
 // }
 
-export interface IForm {
-  [key: string]: ReturnType<typeof useField>;
-}
+// export interface IForm {
+//   [key: string]: ReturnType<typeof useField>;
+// }
 
-export type IFormWithValidKey = { valid?: ComputedRef<boolean> } & IForm;
+// export type IFormWithValidKey = { valid?: ComputedRef<boolean> } & IForm;

@@ -11,11 +11,18 @@
         class="form__input"
         :class="{ invalid: !form.title.valid && form.title.touched }"
       ></custom-input>
-      <p v-if="form.title.errors.required && form.title.touched" class="error">
+      <p
+        v-show="form.title.errors.required && form.title.touched"
+        class="error"
+      >
         Field is required
       </p>
       <p
-        v-else-if="form.title.errors.minLength && form.title.touched"
+        v-show="
+          !form.title.errors.required &&
+          form.title.errors.minLength &&
+          form.title.touched
+        "
         class="error"
       >
         Title length can't be less then 7.
@@ -41,7 +48,7 @@
         Text length can't be less then 18.
       </p>
     </div>
-    <styled-link-button :disabled="!form.valid" @click.prevent.="onSubmit"
+    <styled-link-button :disabled="!form.valid" @click.prevent="onSubmit"
       >CREATE</styled-link-button
     >
   </form>
@@ -81,6 +88,9 @@ const onSubmit = () => {
   };
   emit("addPost", post);
   postId.value++;
+
+  form.title.value = "";
+  form.text.value = "";
 };
 </script>
 
@@ -124,10 +134,6 @@ const onSubmit = () => {
   font-size: 10px;
   color: red;
 }
-
-/* .disable:hover {
-  transform: translateX(30px);
-} */
 
 @media screen and (min-width: 768px) {
   .form {
