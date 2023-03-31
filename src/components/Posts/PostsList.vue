@@ -1,17 +1,3 @@
-<template>
-  <ul class="list">
-    <TransitionGroup name="item" tag="ul">
-      <PostsListItem
-        v-for="(post, index) in posts"
-        :key="post.id"
-        :post="post"
-        @delete-post="$emit('deletePost', post.id, index)"
-      />
-    </TransitionGroup>
-    <p v-if="posts.length <= 0" class="empty-list-text">List is empty</p>
-  </ul>
-</template>
-
 <script lang="ts">
 export default {};
 </script>
@@ -25,6 +11,22 @@ interface IProps {
 
 defineProps<IProps>();
 </script>
+
+<template>
+  <ul class="list">
+    <TransitionGroup name="item" tag="ul">
+      <PostsListItem
+        v-for="(post, index) in posts"
+        :key="post.id"
+        :post="post"
+        @delete-post="$emit('deletePost', post.id, index)"
+      />
+    </TransitionGroup>
+    <Transition name="empty">
+      <p v-if="posts.length <= 0" class="empty-list-text">List is empty</p>
+    </Transition>
+  </ul>
+</template>
 
 <style lang="css" scoped>
 .list {
@@ -40,6 +42,7 @@ defineProps<IProps>();
 .item-leave-active {
   transition: all 0.5s ease;
 }
+
 .item-enter-from,
 .item-leave-to {
   opacity: 0;
@@ -56,6 +59,14 @@ defineProps<IProps>();
   color: var(--light-purpule-color);
   text-shadow: -1px 0 var(--dark-purpule-color), 1px 0 var(--dark-purpule-color),
     0 -1px var(--dark-purpule-color), 0 1px var(--dark-purpule-color);
+}
+
+.empty-enter-active {
+  transition: opacity 2.5s ease;
+}
+
+.empty-enter-from {
+  opacity: 0;
 }
 
 @media (min-width: 480px) {

@@ -1,3 +1,27 @@
+<script setup lang="ts">
+import { usePosts } from "@/hooks/posts";
+import { useSortedPosts } from "@/hooks/sortedPosts";
+import { useSearchedSortedPosts } from "@/hooks/searchedSortedPosts";
+import { useModal } from "@/hooks/modal";
+import { postSortOptions } from "@/utils/slectOtions";
+import { IPost } from "@/types/postTypes";
+import PostsList from "@/components/Posts/PostsList.vue";
+import PostForm from "@/components/Posts/PostForm.vue";
+import VPagination from "@/components/VPagination.vue";
+
+const { posts, currPage, totalPages, loading, error, addPost, deletePost } =
+  usePosts();
+const { selectedSortOpt, sortedPosts } = useSortedPosts(posts);
+const { searchQuery, searchedSortedPosts } =
+  useSearchedSortedPosts(sortedPosts);
+const { isShown, toggleModal } = useModal();
+
+const addPostHandler = (post: IPost) => {
+  addPost(post);
+  toggleModal();
+};
+</script>
+
 <template>
   <div class="container">
     <div class="top-wrapper">
@@ -35,30 +59,6 @@
     />
   </div>
 </template>
-
-<script setup lang="ts">
-import { usePosts } from "@/hooks/posts";
-import { useSortedPosts } from "@/hooks/sortedPosts";
-import { useSearchedSortedPosts } from "@/hooks/searchedSortedPosts";
-import { useModal } from "@/hooks/modal";
-import { postSortOptions } from "@/utils/slectOtions";
-import { IPost } from "@/types/postTypes";
-import PostsList from "@/components/Posts/PostsList.vue";
-import PostForm from "@/components/Posts/PostForm.vue";
-import VPagination from "@/components/VPagination.vue";
-
-const { posts, currPage, totalPages, loading, error, addPost, deletePost } =
-  usePosts();
-const { selectedSortOpt, sortedPosts } = useSortedPosts(posts);
-const { searchQuery, searchedSortedPosts } =
-  useSearchedSortedPosts(sortedPosts);
-const { isShown, toggleModal } = useModal();
-
-const addPostHandler = (post: IPost) => {
-  addPost(post);
-  toggleModal();
-};
-</script>
 
 <style scoped>
 .container {
