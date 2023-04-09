@@ -1,8 +1,4 @@
-<script setup lang="ts">
-import { useCourses } from "@/hooks/courses";
-
-useCourses();
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div>Courses</div>

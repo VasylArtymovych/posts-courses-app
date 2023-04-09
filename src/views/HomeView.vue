@@ -125,6 +125,16 @@ const generateUrl = (id: string) => {
   height: 100%;
   border: none;
 }
+
+@media (min-width: 768px) {
+  .home {
+    min-height: 100%;
+    padding: 80px 20px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
 /* .video__button {
   position: absolute;
   top: 50%;
@@ -148,16 +158,6 @@ const generateUrl = (id: string) => {
 .video__button-icon {
   fill: #ffffff;
 } */
-
-@media (min-width: 768px) {
-  .home {
-    min-height: 100%;
-    padding: 80px 20px 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-}
 </style>
 
 <!-- <script lang="ts">
@@ -177,5 +177,3 @@ export default defineComponent({
   },
 });
 </script> -->
-
-//https://www.youtube.com/embed/zMoHZkQ4c3o

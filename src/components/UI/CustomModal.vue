@@ -76,10 +76,10 @@ withDefaults(defineProps<IProps>(), {
 }
 
 .modal-enter-active {
-  animation: bounce-in 0.5s;
+  animation: bounce-in 0.3s;
 }
 .modal-leave-active {
-  animation: bounce-in 0.5s reverse;
+  animation: bounce-in 0.3s reverse;
 }
 
 @media screen and (min-width: 768px) {

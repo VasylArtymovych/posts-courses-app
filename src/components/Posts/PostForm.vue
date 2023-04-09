@@ -49,7 +49,7 @@
       </p>
     </div>
     <styled-link-button :disabled="!form.valid" @click.prevent="onSubmit"
-      >CREATE</styled-link-button
+      >ADD</styled-link-button
     >
   </form>
 </template>
@@ -123,6 +123,7 @@ const onSubmit = () => {
 }
 
 .form__textarea {
+  height: 4rem;
   resize: none;
 }
 
