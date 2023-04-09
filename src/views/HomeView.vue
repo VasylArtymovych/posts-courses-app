@@ -5,7 +5,9 @@ const videoIds = ref([
   "zMoHZkQ4c3o",
   "ZW_FzHK_PTc",
   "pGbIOC83-So",
+  "NcBjx_eyvxc",
   "KwwHtnDhCyY",
+  "2B6q4ZF-WBs",
 ]);
 
 const onVideoClick = (e: Event) => {
