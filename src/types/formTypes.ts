@@ -1,13 +1,15 @@
 // import type { ComputedRef } from "vue";
 // import { useField } from "@/hooks/field";
 
-export interface IValidators {
-  [ket: string]: (val: string | number) => boolean;
-}
+// export type TValidators<T> = {
+//   [P in keyof T]: (val: string | number) => boolean;
+// };
+
+export type TValidators = Record<string, (val: string | number) => boolean>;
 
 export interface IFormFieldValue {
   value: string;
-  validators: IValidators;
+  validators: TValidators;
 }
 
 export interface IInitFormParam {
@@ -15,23 +17,9 @@ export interface IInitFormParam {
 }
 
 export type Errors = {
-  [key in keyof IValidators]: boolean;
+  [key in keyof TValidators]: boolean;
 };
 
 export interface IErrors {
   [key: string]: boolean;
 }
-
-// export interface IFieldValue {
-//   value: string | number;
-//   valid: boolean;
-//   errors: IErrors;
-//   touched: boolean;
-//   blur: () => void;
-// }
-
-// export interface IForm {
-//   [key: string]: ReturnType<typeof useField>;
-// }
-
-// export type IFormWithValidKey = { valid?: ComputedRef<boolean> } & IForm;

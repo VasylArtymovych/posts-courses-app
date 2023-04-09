@@ -1,22 +1,3 @@
-<template>
-  <li class="item">
-    <div class="text-wrapper">
-      <span class="item__id">{{ post.id }}</span>
-      <h3 class="item__title">{{ post.title }}!</h3>
-      <p class="item__body">{{ post.body }}</p>
-    </div>
-    <div class="btns-wrapper">
-      <custom-button class="btn-layout">OPEN</custom-button>
-      <custom-button class="btn-layout" @click="onDeleteBtn"
-        >DELETE</custom-button
-      >
-    </div>
-  </li>
-</template>
-
-<script lang="ts">
-export default {};
-</script>
 <script setup lang="ts">
 import { IPost } from "@/types/postTypes";
 import CustomButton from "@/components/UI/CustomButton.vue";
@@ -32,6 +13,22 @@ const onDeleteBtn = () => {
   emit("deletePost");
 };
 </script>
+
+<template>
+  <li class="item">
+    <div class="text-wrapper">
+      <span class="item__id">{{ post.id }}</span>
+      <h3 class="item__title">{{ post.title }}!</h3>
+      <p class="item__body">{{ post.body }}</p>
+    </div>
+    <div class="btns-wrapper">
+      <custom-button class="btn-layout">OPEN</custom-button>
+      <custom-button class="btn-layout" @click="onDeleteBtn"
+        >DELETE</custom-button
+      >
+    </div>
+  </li>
+</template>
 
 <style lang="css">
 .item {

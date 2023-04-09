@@ -1,6 +1,3 @@
-<script lang="ts">
-export default {};
-</script>
 <script setup lang="ts">
 import { IPost } from "@/types/postTypes";
 import PostsListItem from "@/components/Posts/PostsListItem.vue";

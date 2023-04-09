@@ -54,9 +54,6 @@
   </form>
 </template>
 
-<script lang="ts">
-export default {};
-</script>
 <script setup lang="ts">
 import { unref } from "vue";
 import { required, minLength } from "@/utils/validators";

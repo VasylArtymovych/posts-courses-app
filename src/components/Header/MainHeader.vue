@@ -7,9 +7,6 @@
   </div>
 </template>
 
-<script lang="ts">
-export default {};
-</script>
 <script setup lang="ts">
 import HeaderLogo from "@/components/Header/HeaderLogo.vue";
 import HeaderNav from "@/components/Header/HeaderNav.vue";

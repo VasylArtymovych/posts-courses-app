@@ -3,10 +3,14 @@ import { IFormFieldValue } from "@/types/formTypes";
 import { useField } from "@/hooks/field";
 
 export const useForm = <T extends object>(init: T) => {
-  const form = reactive<{ [key: string]: any }>({});
+  const form: Record<
+    PropertyKey,
+    any
+    // ReturnType<typeof useField> | ComputedRef<boolean>
+  > = reactive({});
   const formValidKey = "valid";
 
-  Object.entries(init).forEach(([key, value]: [string, IFormFieldValue]) => {
+  Object.entries(init).forEach(([key, value]) => {
     form[key] = useField(value);
   });
 

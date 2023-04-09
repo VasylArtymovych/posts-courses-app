@@ -1,13 +1,11 @@
-<template lang="">
+<script setup lang="ts">
+import { useCourses } from "@/hooks/courses";
+
+useCourses();
+</script>
+
+<template>
   <div>Courses</div>
 </template>
 
-<script setup lang="ts"></script>
-
-<!-- <script lang="ts">
-export default {
-  name: "CoursesView",
-};
-</script> -->
-
-<style lang="css"></style>
+<style lang="css" scoped></style>
